@@ -1,0 +1,59 @@
+type Calendar {
+  calendarId: ID!
+  name: String!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Appointment {
+  appointmentId: ID!
+  calendarId: ID!
+  title: String!
+  startAt: AWSDateTime!
+  endAt: AWSDateTime!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Query {
+  calendar(calendarId: ID!): Calendar!
+  appointment(appointmentId: ID!): Appointment!
+}
+
+input CreateCalendarInput {
+  name: String!
+}
+
+input UpdateCalendarInput {
+  calendarId: ID!
+  name: String!
+}
+
+input CreateAppointmentInput {
+  calendarId: ID!
+  title: String!
+  startAt: AWSDateTime!
+  durationInMinutes: Int!
+  overlap: Boolean!
+}
+
+input UpdateAppointmentInput {
+  appointmentId: ID!
+  title: String
+  startAt: AWSDateTime
+  durationInMinutes: Int
+  overlap: Boolean
+}
+
+input DeleteAppointmentInput {
+  appointmentId: ID!
+}
+
+type Mutation {
+  createCalendar(input: CreateCalendarInput!): Calendar!
+  updateCalendar(input: UpdateCalendarInput!): Calendar!
+
+  createAppointment(input: CreateAppointmentInput!): Appointment!
+  updateAppointment(input: UpdateAppointmentInput!): Appointment!
+  deleteAppointment(input: DeleteAppointmentInput!): Boolean!
+}

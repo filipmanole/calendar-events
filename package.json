@@ -1,0 +1,24 @@
+{
+  "name": "calendar-events",
+  "version": "1.0.0",
+  "description": "GraphQL API for creating calendars and planning events. Powered with AWS AppSync and DynamoDB.",
+  "main": "index.js",
+  "scripts": {
+    "codegen": "npx graphql-codegen --config codegen.yml",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Filip Manole",
+  "license": "MIT License",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.658.0",
+    "@aws-sdk/lib-dynamodb": "^3.658.0",
+    "date-fns": "^4.1.0",
+    "ksuid": "^3.0.0",
+    "sst": "3.1.38"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/typescript": "^4.0.9",
+    "@types/aws-lambda": "8.10.145"
+  }
+}
