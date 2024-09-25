@@ -58,6 +58,17 @@ export type DeleteAppointmentInput = {
   appointmentId: Scalars['ID']['input'];
 };
 
+export enum ListAppointmentType {
+  Day = 'DAY',
+  Week = 'WEEK'
+}
+
+export type ListAppointmentsInput = {
+  calendarId: Scalars['ID']['input'];
+  date: Scalars['AWSDate']['input'];
+  type: ListAppointmentType;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   createAppointment: Appointment;
@@ -96,6 +107,7 @@ export type Query = {
   __typename?: 'Query';
   appointment: Appointment;
   calendar: Calendar;
+  listAppointments: Array<Appointment>;
 };
 
 
@@ -106,6 +118,11 @@ export type QueryAppointmentArgs = {
 
 export type QueryCalendarArgs = {
   calendarId: Scalars['ID']['input'];
+};
+
+
+export type QueryListAppointmentsArgs = {
+  input: ListAppointmentsInput;
 };
 
 export type UpdateAppointmentInput = {

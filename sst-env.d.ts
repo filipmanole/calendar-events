@@ -29,6 +29,10 @@ declare module "sst" {
       "name": string
       "type": "sst.aws.Function"
     }
+    "listAppointments": {
+      "name": string
+      "type": "sst.aws.Function"
+    }
     "scheduler-api": {
       "type": "sst.aws.AppSync"
       "url": string

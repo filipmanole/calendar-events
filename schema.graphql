@@ -15,9 +15,21 @@ type Appointment {
   updatedAt: AWSDateTime!
 }
 
+enum ListAppointmentType {
+  WEEK
+  DAY
+}
+
+input ListAppointmentsInput {
+  calendarId: ID!
+  type: ListAppointmentType!
+  date: AWSDate!
+}
+
 type Query {
   calendar(calendarId: ID!): Calendar!
   appointment(appointmentId: ID!): Appointment!
+  listAppointments(input: ListAppointmentsInput!): [Appointment!]!
 }
 
 input CreateCalendarInput {

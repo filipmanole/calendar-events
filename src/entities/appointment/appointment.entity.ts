@@ -1,6 +1,6 @@
 import { Appointment } from "../../appsync";
 import { generateKSUID, Optional } from "../utils";
-import { getDay, getWeek } from "date-fns";
+import { getDay, getWeek, getWeekYear, getYear } from "date-fns";
 
 type AppointmentProps = Optional<
   Appointment,
@@ -39,7 +39,9 @@ export class AppointmentEntity {
   }
 
   get GSI1PK() {
-    return `CAL#${this.calendarId}#WEEK#${getWeek(this.startAt)}`;
+    return `CAL#${this.calendarId}#YEAR#${getYear(this.startAt)}#WEEK#${getWeek(
+      this.startAt
+    )}`;
   }
 
   get GSI1SK() {

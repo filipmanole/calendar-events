@@ -14,8 +14,16 @@ export default $config({
       fields: {
         PK: "string",
         SK: "string",
+        GSI1PK: "string",
+        GSI1SK: "string",
       },
       primaryIndex: { hashKey: "PK", rangeKey: "SK" },
+      globalIndexes: {
+        GSI1: {
+          hashKey: "GSI1PK",
+          rangeKey: "GSI1SK",
+        },
+      },
     });
 
     // Create AppSync GraphQL API
@@ -138,6 +146,21 @@ export default $config({
 
     appSync.addResolver("Mutation deleteAppointment", {
       dataSource: deleteAppointment.name,
+    });
+
+    // List Appointments query
+    const listAppointmentsFunction = new sst.aws.Function("listAppointments", {
+      handler: "src/handlers/appointment/listAppointments.handler",
+      link: [calendarTable],
+    });
+
+    const listAppointments = appSync.addDataSource({
+      name: "listAppointments",
+      lambda: listAppointmentsFunction.arn,
+    });
+
+    appSync.addResolver("Query listAppointments", {
+      dataSource: listAppointments.name,
     });
   },
 });
