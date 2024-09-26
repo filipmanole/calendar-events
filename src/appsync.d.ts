@@ -137,6 +137,7 @@ export type QueryListAppointmentsArgs = {
 
 export type UpdateAppointmentInput = {
   appointmentId: Scalars['ID']['input'];
+  calendarId?: InputMaybe<Scalars['ID']['input']>;
   durationInMinutes?: InputMaybe<Scalars['Int']['input']>;
   overlap?: InputMaybe<Scalars['Boolean']['input']>;
   startAt?: InputMaybe<Scalars['AWSDateTime']['input']>;

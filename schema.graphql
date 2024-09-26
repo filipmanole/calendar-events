@@ -55,6 +55,7 @@ input CreateAppointmentInput {
 
 input UpdateAppointmentInput {
   appointmentId: ID!
+  calendarId: ID
   title: String
   startAt: AWSDateTime
   durationInMinutes: Int

@@ -5,6 +5,7 @@ import { Resource } from "sst";
 
 type UpdateAppointmentProps = {
   appointmentId: string;
+  calendarId?: string;
   title?: string;
   startAt?: string;
   endAt?: string;
