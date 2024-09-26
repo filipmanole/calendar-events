@@ -87,6 +87,9 @@ mutation DeleteCalendar {
 
 ### Create appointment example
 
+- `overlap: false` will not let time range of the new appointment to overlap with existing one
+- `overlap: true` will not check the time range of the new appointment
+
 ```graphql
 mutation CreateAppointment {
   createAppointment(
@@ -126,6 +129,9 @@ query GetAppointment {
 ```
 
 ### Update appointment example
+
+- `overlap: false` will not let time range of the new appointment to overlap with existing one
+- `overlap: true` will not check the time range of the new appointment
 
 ```graphql
 mutation UpdateAppointment {
