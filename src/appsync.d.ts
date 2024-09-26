@@ -58,6 +58,10 @@ export type DeleteAppointmentInput = {
   appointmentId: Scalars['ID']['input'];
 };
 
+export type DeleteCalendarInput = {
+  calendarId: Scalars['ID']['input'];
+};
+
 export enum ListAppointmentType {
   Day = 'DAY',
   Week = 'WEEK'
@@ -74,6 +78,7 @@ export type Mutation = {
   createAppointment: Appointment;
   createCalendar: Calendar;
   deleteAppointment: Scalars['Boolean']['output'];
+  deleteCalendar: Scalars['Boolean']['output'];
   updateAppointment: Appointment;
   updateCalendar: Calendar;
 };
@@ -91,6 +96,11 @@ export type MutationCreateCalendarArgs = {
 
 export type MutationDeleteAppointmentArgs = {
   input: DeleteAppointmentInput;
+};
+
+
+export type MutationDeleteCalendarArgs = {
+  input: DeleteCalendarInput;
 };
 
 

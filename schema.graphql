@@ -41,6 +41,10 @@ input UpdateCalendarInput {
   name: String!
 }
 
+input DeleteCalendarInput {
+  calendarId: ID!
+}
+
 input CreateAppointmentInput {
   calendarId: ID!
   title: String!
@@ -64,6 +68,7 @@ input DeleteAppointmentInput {
 type Mutation {
   createCalendar(input: CreateCalendarInput!): Calendar!
   updateCalendar(input: UpdateCalendarInput!): Calendar!
+  deleteCalendar(input: DeleteCalendarInput!): Boolean!
 
   createAppointment(input: CreateAppointmentInput!): Appointment!
   updateAppointment(input: UpdateAppointmentInput!): Appointment!

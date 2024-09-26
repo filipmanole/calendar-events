@@ -21,6 +21,10 @@ declare module "sst" {
       "name": string
       "type": "sst.aws.Function"
     }
+    "deleteCalendar": {
+      "name": string
+      "type": "sst.aws.Function"
+    }
     "getAppointment": {
       "name": string
       "type": "sst.aws.Function"

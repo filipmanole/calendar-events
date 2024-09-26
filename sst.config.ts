@@ -79,6 +79,21 @@ export default $config({
       dataSource: updateCalendar.name,
     });
 
+    // Delete calendar mutation
+    const deleteCalendarFunction = new sst.aws.Function("deleteCalendar", {
+      handler: "src/handlers/calendar/deleteCalendar.handler",
+      link: [calendarTable],
+    });
+
+    const deleteCalendar = appSync.addDataSource({
+      name: "deleteCalendar",
+      lambda: deleteCalendarFunction.arn,
+    });
+
+    appSync.addResolver("Mutation deleteCalendar", {
+      dataSource: deleteCalendar.name,
+    });
+
     // Create Appointment mutation
     const createAppointmentFunction = new sst.aws.Function(
       "createAppointment",
